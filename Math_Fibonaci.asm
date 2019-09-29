@@ -31,7 +31,7 @@ Fibo:
      add ax,bx
      add cx,1
      mov bx,dx
-     cmp cx,x
+     cmp cx,x   ; in so fibo thu x
      jb Fibo
      call hienthi
      ; thoat

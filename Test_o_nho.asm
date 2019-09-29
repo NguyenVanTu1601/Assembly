@@ -1,24 +1,45 @@
+
+; tinh va luu 10 so fibo vao cac o nho bat dau tu 9810h
 .model small
 .stack 100h
-.data
-   x db 4
+.data 
+tb1 db 10,13, '$'
+arr dw 1256,2458,778,415,378,978,878,678
+
 .code
-main proc  
+main proc 
+    
     mov ax, @data
     mov ds,ax
     
-    mov cl,16
-    mov bx,0001101101011101b
+    mov cx,7
+    lea si, arr 
+    mov bx,0
+    lap:
+       xor dx,dx
+       mov dx,[si] 
+       add si,2
+       ;xor dh,dh 
+       cmp dx,bx
+       ja gan
+       jmp re
+       
+       gan: 
+          mov bx,dx
+          
+       re:
+          loop lap
     
-    rol bx,16
-    mov ax,bx
+    ; in
+    mov ax, bx
     call hienthi
+
     mov ah,4ch
     int 21h
+    
 main endp
-     hienthi proc
+    hienthi proc
            mov bx,10
-           
            mov cx,0
        chia:
            mov dx, 0
@@ -37,5 +58,5 @@ main endp
            cmp cx,0
            jne ht
            ret            
-    hienthi endp
+    hienthi endp 
 endp main
