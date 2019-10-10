@@ -24,7 +24,7 @@ main proc
       ; nhap
       mov cx,5
       nhapmang:
-         call nhap
+         call nhapso
          lea dx,tb3
          mov ah,9
          int 21h
@@ -74,6 +74,7 @@ main endp
     hienthi proc
            mov bx,10
            mov ax,[si]
+           xor ah,ah
            inc si
            mov cx,0
        chia:
